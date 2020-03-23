@@ -8,7 +8,7 @@ import window_info as windowInfo
 
 environment = {
   "xResistance": 0,
-  "yResistance": -9.81
+  "yResistance": - 9.80665
 }
 
 def timeToGround( location, velocity, acceleration):
@@ -19,6 +19,7 @@ def timeToGround( location, velocity, acceleration):
   return abs((-b - root) / (2 * a));
 
 def drawGameWindow():
+  win.fill((255,255,255))
   for i in range(len(location.y)):
     pygame.draw.rect(win, (0, 0, 0), (location.x[i], location.y[i] + projectile.width / 2, 1, 1))
   instructions = font.render("click anywhere to reset projectile", 1, (0,0,0))
@@ -29,7 +30,6 @@ def drawGameWindow():
   velocityInput.draw(win)
   angleInput.draw(win)
   pygame.display.update()
-  win.fill((255,255,255))
 
 
 
@@ -77,6 +77,5 @@ while run:
       projectile.setAngle(int(angleInput.content))
     except:
       print("please enter an integer")
-
   drawGameWindow()
 pygame.quit()
