@@ -3,7 +3,7 @@ import math
 
 from projectile import Projectile
 from grid import Grid
-from input_box import InputBox
+from pygame-util-library import InputBox
 import window_info as windowInfo
 
 environment = {

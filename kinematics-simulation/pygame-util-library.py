@@ -16,7 +16,7 @@ class InputBox:
     self.content = ""
     self.font = pygame.font.SysFont('arial', 15)
     self.isValueConfirmed = False
-  
+
   def draw(self, window):
     if self.isActive == True:
       self.image.fill(self.activeColor)
@@ -32,7 +32,7 @@ class InputBox:
   def runInputBox(self, event):
     if event.type == pygame.MOUSEBUTTONDOWN:
       self.checkClicked(pygame.mouse.get_pos())
-    
+
     if event.type == pygame.KEYDOWN:
       if self.isActive:
         self.updateContent(event.key)
@@ -44,7 +44,7 @@ class InputBox:
     elif self.isActive and self.content:
       self.isActive = False
       self.isValueConfirmed = True
-  
+
   def updateContent(self, key):
     delete = 8
     if key == delete or key == pygame.K_DELETE or key == pygame.K_BACKSPACE:
@@ -57,3 +57,25 @@ class InputBox:
 
     else:
       self.content += chr(key)
+
+class TextBox:
+  def __init__(self, x, y ,width, height, content, fontSize = 20, bgColor = False, textColor = (0,0,0)):
+    self.x = x
+    self.y = y
+    self.width = width
+    self.height = height
+    self.image = pygame.Surface((width, height))
+    self.fontSize = fontSize
+    self.bgColor = bgColor
+    self.textColor = textColor
+    self.content = pygame.font.SysFont('arial', 15).render(content, 1, self.textColor)
+
+  def draw(self, window):
+    if(self.bgColor):
+      self.image.fill(self.bgColor)
+      window.blit(self.image, (self.x, self.y))
+    window.blit(self.content, (self.x, self.y))
+
+
+def drawPixel(window, x, y, color = (255,0,0)):
+  pygame.draw.rect(window, color, (x, y, 1, 1))
