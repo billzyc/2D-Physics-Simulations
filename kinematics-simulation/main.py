@@ -3,7 +3,7 @@ import math
 
 from projectile import Projectile
 from grid import Grid
-from pygame-util-library import InputBox
+from pygame_util_library import InputBox
 import window_info as windowInfo
 
 environment = {
@@ -42,9 +42,6 @@ angleInput = InputBox(windowInfo.width/2, 50, 50, 25, 'enter the degree of the i
 projectile = Projectile(5)
 location = Grid()
 accumulatedTime = 0
-# getProjectileCondition = input("add initial velocity and initial degree? Input y for yes, any key for no: ")
-# if(getProjectileCondition == 'y'):
-#   projectile.getProjectileConditions()
 win = pygame.display.set_mode((windowInfo.width, windowInfo.height))
 pygame.display.set_caption("kinematics simulation")
 
