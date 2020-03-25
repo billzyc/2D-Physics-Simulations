@@ -1,9 +1,7 @@
 import pygame
 import math
 
-from projectile import Projectile
-from grid import Grid
-from pygame-util-library import InputBox
+from pygame_util_library import InputBox
 import window_info as windowInfo
 
 
@@ -18,9 +16,9 @@ font = pygame.font.SysFont('arial', 15)
 
 #enviroment setup
 win = pygame.display.set_mode((windowInfo.width, windowInfo.height))
-pygame.display.set_caption("kinematics simulation")
+pygame.display.set_caption("electrostatics simulation")
 
-#main lopp
+#main loop
 run = True
 while run:
 
