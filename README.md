@@ -2,6 +2,8 @@
 
 ## set up
 
+** If you are viewing this on a macbook retina display, please navigate to where python 3 is install, click the icon, choose get information and select launch in low resolution more. If this is not done, the simulation will run at a low fps
+
 1) Install python3 at "https://www.python.org/downloads/"
 
 2) In terminal or command prompt type in and enter python3 -m pip install -U pygame --user"
