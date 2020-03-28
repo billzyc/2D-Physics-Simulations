@@ -3,23 +3,30 @@ import math
 
 from particle import Particle
 import window_info as windowInfo
+from pygame_util_library import TextBox
 
 
 def drawGameWindow():
   win.fill((255,255,255))
+  drawGrid()
   for i in range(len(particleList)):
     particleList[i].draw(win)
 
-# def isParticleClicked(position):
-#   isParticleClicked = False
-#   for i in range(len(particleList)):
-#     if particleList[i].checkClicked(position):
-#       particleList[i].isTarget = True
-#       targetParticle = particleList[i]
-#       isParticleClicked = True
-#     else:
-#       particleList[i].isTarget = False
-#   return isParticleClicked
+def drawGrid():
+  gridGapLength = 50
+  orginX = windowInfo.width/2
+  orginY = int((windowInfo.height - windowInfo.ceiling)/2)
+  #y-axis
+  pygame.draw.line(win, (0,0,155), (orginX, windowInfo.height),(orginX, windowInfo.ceiling))
+  for i in range( 0, windowInfo.width, gridGapLength):
+    xLabel = TextBox(i, orginY, 5, 5, f'{str(int(orginX - i) * -1)} cm', 5)
+    xLabel.draw(win)
+  #x-axis
+  pygame.draw.line(win, (0,0,155), (0, round(windowInfo.height - windowInfo.ceiling)/2),(windowInfo.width,round(windowInfo.height - windowInfo.ceiling)/2))
+
+  for i in range( windowInfo.ceiling, windowInfo.height, gridGapLength):
+    xLabel = TextBox(orginX, i, 5, 5, f'{str(orginY - i)} cm', 5)
+    xLabel.draw(win)
 
 pygame.init()
 font = pygame.font.SysFont('arial', 15)
@@ -53,7 +60,7 @@ while run:
         else:
           particleList[i].isTarget = False
       if not isParticleClicked:
-        newParticle = Particle(position[0], position[1], 12)
+        newParticle = Particle(position[0], position[1], 8)
         particleList.append(newParticle)
         particleSetupInProgress = (True, newParticle)
     for i in range(len(particleList)):

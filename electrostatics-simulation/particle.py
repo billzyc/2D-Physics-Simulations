@@ -17,9 +17,9 @@ class Particle:
 
   def draw(self, window):
     if (self.isTarget):
-      pygame.draw.circle(window, (0,0,255), (self.x + self.radius, self.y + self.radius), self.radius)
+      pygame.draw.circle(window, (0,0,255), (self.x , self.y), self.radius)
     else:
-      pygame.draw.circle(window, (0,0,0), (self.x + self.radius, self.y + self.radius), self.radius)
+      pygame.draw.circle(window, (0,0,0), (self.x , self.y ), self.radius)
     if not self.isChargeAdded():
       self.input.draw(window)
     else:
@@ -27,20 +27,20 @@ class Particle:
     if(self.charge):
       fontsize = 15
       font = pygame.font.SysFont('arial', fontsize)
-      content = font.render(str(self.charge / 1e-6), 1, (255,255,255))
-      window.blit(content, (self.x + round((self.radius + fontsize) * 0.4) , self.y + round((self.radius + fontsize) * 0.4)))
+      content = font.render(str(self.charge / 1e-6), 1, (0,0,200))
+      window.blit(content, (self.x - self.radius, self.y - round(self.radius * 2.5)))
     if(self.isTarget):
       fontsize = 20
       font = pygame.font.SysFont('arial', fontsize)
-      content = font.render(f'total electric force is {self.totalForce}', 1, (0,0,0))
-      window.blit(content, (self.x , self.y + self.radius * 4))
+      content = font.render(f'total electric force is {round(self.totalForce,4)} N', 1, (0,0,0))
+      window.blit(content, (self.x - self.radius * 2 , self.y + round(self.radius * 2.5)))
 
   def runParticle(self, event):
     if not self.isChargeAdded():
       self.input.runInputBox(event)
 
   def checkClicked(self, clickedPos):
-    if clickedPos[0] > self.x and clickedPos[0] < self.x + self.radius * 2 and clickedPos[1] > self.y and clickedPos[1] < self.y + self.radius * 2:
+    if clickedPos[0] > self.x - self.radius and clickedPos[0] < self.x + self.radius and clickedPos[1] > self.y - self.radius and clickedPos[1] < self.y + self.radius:
         return True
     else:
       return False
@@ -54,7 +54,8 @@ class Particle:
   def calculateDistance( self, secondCharge):
     xDifference = self.x - secondCharge.x
     yDifference = self.y - secondCharge.y
-    return math.sqrt(xDifference**2 + yDifference**2)
+    distanceInCM = math.sqrt(xDifference**2 + yDifference**2) / 100
+    return distanceInCM
 
   def coulombsLaw(self, secondCharge):
     eNaught = 8.854e-12
