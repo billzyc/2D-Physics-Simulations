@@ -20,15 +20,16 @@ def timeToGround( location, velocity, acceleration):
 
 def drawGrid():
   gridGapLength = 30
-  #x-axis
-  pygame.draw.line(win, (0,0,150), (windowInfo.width/2, windowInfo.groundHeight),(windowInfo.width/2, windowInfo.inputHeight))
-  for i in range( windowInfo.inputHeight + gridGapLength, windowInfo.groundHeight, gridGapLength):
-    yLabel = TextBox(windowInfo.width/2 - gridGapLength, i, 5, 5, str((i - windowInfo.groundHeight) * -1), 5)
-    yLabel.draw(win)
   #y-axis
-  pygame.draw.line(win, (0,0,0), (0, windowInfo.groundHeight),(windowInfo.width,windowInfo.groundHeight))
+  pygame.draw.line(win, (0,0,150), (windowInfo.width/2, windowInfo.groundHeight),(windowInfo.width/2, windowInfo.inputHeight))
   for i in range( gridGapLength, windowInfo.width - gridGapLength, gridGapLength):
-    xLabel = TextBox(i, windowInfo.groundHeight + 5, 5, 5, str(i), 5)
+    yLabel = TextBox(i, windowInfo.groundHeight + 5, 5, 5, str(i), 5)
+    yLabel.draw(win)
+
+  #x-axis
+  pygame.draw.line(win, (0,0,150), (0, windowInfo.groundHeight),(windowInfo.width,windowInfo.groundHeight))
+  for i in range( windowInfo.inputHeight + gridGapLength, windowInfo.groundHeight, gridGapLength):
+    xLabel = TextBox(windowInfo.width/2 - gridGapLength, i, 5, 5, str((i - windowInfo.groundHeight) * -1), 5)
     xLabel.draw(win)
 
 def drawGameWindow():
