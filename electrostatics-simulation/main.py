@@ -8,6 +8,8 @@ from pygame_util_library import TextBox
 
 def drawGameWindow():
   win.fill((255,255,255))
+  pygame.draw.line(win, (0,0,0), (0, windowInfo.ceiling), (windowInfo.width, windowInfo.ceiling))
+  win.blit(instructions, (200, round(windowInfo.ceiling/2)))
   drawGrid()
   for i in range(len(particleList)):
     particleList[i].draw(win)
@@ -29,12 +31,12 @@ def drawGrid():
     xLabel.draw(win)
 
 pygame.init()
-font = pygame.font.SysFont('arial', 15)
+font = pygame.font.SysFont('arial', 30)
 particleList = []
 #enviroment setup
 win = pygame.display.set_mode((windowInfo.width, windowInfo.height))
 pygame.display.set_caption("electrostatics simulation")
-
+instructions = font.render("Click anywhere to place charge. Click on charge to set as target charge", 1, (0,0,0))
 #main loop
 run = True
 particleSetupInProgress = (False, False)
@@ -64,7 +66,7 @@ while run:
         particleList.append(newParticle)
         particleSetupInProgress = (True, newParticle)
     for i in range(len(particleList)):
-      particleList[i].runParticle(event)
+      particleList[i].eventHandler(event)
   drawGameWindow()
   pygame.display.update()
 pygame.quit()

@@ -25,17 +25,24 @@ class Particle:
     else:
       self.charge = int(self.input.content) * 1e-6
     if(self.charge):
+      self.drawChargeInfo(window)
+    if(self.isTarget):
+      self.drawForceInfo(window)
+
+  def drawChargeInfo(self, window):
       fontsize = 15
       font = pygame.font.SysFont('arial', fontsize)
       content = font.render(str(self.charge / 1e-6), 1, (0,0,200))
       window.blit(content, (self.x - self.radius, self.y - round(self.radius * 2.5)))
-    if(self.isTarget):
+
+  def drawForceInfo(self, window):
       fontsize = 20
       font = pygame.font.SysFont('arial', fontsize)
-      content = font.render(f'total electric force is {round(self.totalForce,4)} N', 1, (0,0,0))
+      content = font.render(f'total electric force is {round(self.totalForce,4)} N', 1, (0,0,155))
       window.blit(content, (self.x - self.radius * 2 , self.y + round(self.radius * 2.5)))
 
-  def runParticle(self, event):
+
+  def eventHandler(self, event):
     if not self.isChargeAdded():
       self.input.runInputBox(event)
 
