@@ -10,6 +10,29 @@
 
 3) In terminal or command prompt type in "git clone https://github.com/billzyc/2D-Physics-Simulations.git"
 
+## Fluid (Smoothed-particle hydrodynamics) simulation
+### overview
+**work in progress**
+Fluid simluation using Smoothed-particle hydrodynamics. 
+Used help from:
+https://blog.altair.com/basics-of-the-smoothed-particle-hydrodynamics-method/
+http://blog.brandonpelfrey.com/?p=303
+https://www.cs.cornell.edu/~bindel/class/cs5220-f11/code/sph.pdf
+
+### set up
+1) after cloning the repo enter "cd fluid-flow-simulation" in terminal or command prompt
+2) enter "python3 main.py" or "python main.py"
+
+## Electrostatics simulation
+### overview
+**work in progress**
+Click anywhere on the grid to place particle and enter value of charge.
+Click again on particle to set as target charge and see the electric force on the target charge.
+
+### set up
+1) after cloning the repo enter "cd electrostatics-simulation" in terminal or command prompt
+2) enter "python3 main.py" or "python main.py"
+
 
 ## Kinematics simulation
 
