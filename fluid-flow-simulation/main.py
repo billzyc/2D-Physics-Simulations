@@ -6,8 +6,6 @@ from pygame.locals import *
 
 from simulationEnvironment import SimulationEnvironment
 from consts import *
-from particle import Particle
-from neighbor import Neighbor
 import window_info as windowInfo
 from pygame_util_library import InputBox, ClickButton
 

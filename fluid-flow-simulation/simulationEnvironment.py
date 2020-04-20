@@ -1,12 +1,8 @@
-import pygame
 import numpy as np
 from math import *
-import random
 
-from consts import *
 from particle import Particle
 from neighbor import Neighbor
-import window_info as windowInfo
 
 
 class SimulationEnvironment:
