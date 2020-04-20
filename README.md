@@ -1,17 +1,6 @@
 # 2D Physics Simulations
 
-## set up
-
-** If you are viewing this on a macbook retina display, please navigate to where python 3 is install, click the icon, choose get information and select launch in low resolution more. If this is not done, the simulation will run at a low fps
-
-1) Install python3 at "https://www.python.org/downloads/"
-
-2) In terminal or command prompt type in and enter python3 -m pip install -U pygame --user"
-
-3) In terminal or command prompt type in "git clone https://github.com/billzyc/2D-Physics-Simulations.git"
-
-**see set up and resource information below overview**
-
+**see set up, resources and individual simulation specific information below the overview section**
 
 ## Fluid (Smoothed-particle hydrodynamics) simulation
 
@@ -40,6 +29,20 @@ Click again on particle to set as target charge and see the electric force on th
 Projectile launch simulation, launch a projectile and view the projectile travel with it's arc.
 Click anywhere in window to position a projectile and enter the velocity/angle it is launched at.
 
+
+built with python, pygames and https://github.com/billzyc/pygame-util-library
+
+## set up
+
+** If you are viewing this on a macbook retina display, please navigate to where python 3 is install, click the icon, choose get information and select launch in low resolution more. If this is not done, the simulation will run at a low fps
+
+1) Install python3 at "https://www.python.org/downloads/"
+
+2) In terminal or command prompt type in and enter python3 -m pip install -U pygame --user"
+
+3) In terminal or command prompt type in "git clone https://github.com/billzyc/2D-Physics-Simulations.git"
+
+
 ## Fluid (Smoothed-particle hydrodynamics) simulation
 
 ### set up
@@ -47,7 +50,7 @@ Click anywhere in window to position a projectile and enter the velocity/angle i
 2) enter "python3 main.py" or "python main.py"
 
 
-Used resources below to for this project:
+Resources used used:
 https://users.csc.calpoly.edu/~zwood/teaching/csc572/final15/awang/index.html
 https://blog.altair.com/basics-of-the-smoothed-particle-hydrodynamics-method/
 http://blog.brandonpelfrey.com/?p=303
