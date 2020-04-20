@@ -14,14 +14,20 @@
 ### overview
 **work in progress**
 Fluid simluation using Smoothed-particle hydrodynamics. 
-Used help from:
-https://blog.altair.com/basics-of-the-smoothed-particle-hydrodynamics-method/
-http://blog.brandonpelfrey.com/?p=303
-https://www.cs.cornell.edu/~bindel/class/cs5220-f11/code/sph.pdf
+Click on input boxes to adjust values such as number of particles, gravitational constant, k, etc.
+Press restart to restart simulation *you will have to restart simulation to see certain values to take effect such as number of particles
+
 
 ### set up
 1) after cloning the repo enter "cd fluid-flow-simulation" in terminal or command prompt
 2) enter "python3 main.py" or "python main.py"
+
+
+Used resources below to for this project:
+https://users.csc.calpoly.edu/~zwood/teaching/csc572/final15/awang/index.html
+https://blog.altair.com/basics-of-the-smoothed-particle-hydrodynamics-method/
+http://blog.brandonpelfrey.com/?p=303
+https://www.cs.cornell.edu/~bindel/class/cs5220-f11/code/sph.pdf
 
 ## Electrostatics simulation
 ### overview
@@ -32,7 +38,6 @@ Click again on particle to set as target charge and see the electric force on th
 ### set up
 1) after cloning the repo enter "cd electrostatics-simulation" in terminal or command prompt
 2) enter "python3 main.py" or "python main.py"
-
 
 ## Kinematics simulation
 
