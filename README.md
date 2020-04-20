@@ -10,13 +10,37 @@
 
 3) In terminal or command prompt type in "git clone https://github.com/billzyc/2D-Physics-Simulations.git"
 
+**see set up and resource information below overview**
+
+
 ## Fluid (Smoothed-particle hydrodynamics) simulation
+
+![fluid gif](https://github.com/billzyc/2D-Physics-Simulations/blob/master/assets/fluid-gif1.gif)
+
 ### overview
 **work in progress**
 Fluid simluation using Smoothed-particle hydrodynamics. 
 Click on input boxes to adjust values such as number of particles, gravitational constant, k, etc.
 Press restart to restart simulation *you will have to restart simulation to see certain values to take effect such as number of particles
 
+## Electrostatics simulation
+
+![electrostatics gif](https://github.com/billzyc/2D-Physics-Simulations/blob/master/assets/electrostatic-gif1.gif)
+### overview
+**work in progress**
+Place charges and view the electrostatic force on any charge in the grid.
+Click anywhere on the grid to place particle and enter value of charge.
+Click again on particle to set as target charge and see the electric force on the target charge.
+
+## Kinematics simulation
+
+![kinematics gif](https://github.com/billzyc/2D-Physics-Simulations/blob/master/assets/kinematic-gif1.gif)
+
+### overview
+Projectile launch simulation, launch a projectile and view the projectile travel with it's arc.
+Click anywhere in window to position a projectile and enter the velocity/angle it is launched at.
+
+## Fluid (Smoothed-particle hydrodynamics) simulation
 
 ### set up
 1) after cloning the repo enter "cd fluid-flow-simulation" in terminal or command prompt
@@ -30,20 +54,12 @@ http://blog.brandonpelfrey.com/?p=303
 https://www.cs.cornell.edu/~bindel/class/cs5220-f11/code/sph.pdf
 
 ## Electrostatics simulation
-### overview
-**work in progress**
-Click anywhere on the grid to place particle and enter value of charge.
-Click again on particle to set as target charge and see the electric force on the target charge.
 
 ### set up
 1) after cloning the repo enter "cd electrostatics-simulation" in terminal or command prompt
 2) enter "python3 main.py" or "python main.py"
 
 ## Kinematics simulation
-
-### overview
-Projectile launch simulation with realistic physics. View the projectile travel and it's arc.
-Click anywhere in window to position a projectile and enter the velocity/angle it is launched at.
 
 ### set up
 1) after cloning the repo enter "cd kinematics-simulation" in terminal or command prompt
