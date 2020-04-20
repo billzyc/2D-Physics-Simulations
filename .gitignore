@@ -1,3 +1,4 @@
 kinematics-simulation/__pycache__/
 electrostatics-simulation/__pycache__/
 fluid-flow-simulation/__pycache__/
+.DS_Store
