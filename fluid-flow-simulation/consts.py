@@ -1,5 +1,5 @@
 physicalConsts = {
-    "numberOfParticles" : 120,
+    "numberOfParticles": 120,
     "gravitationalConstant": 0.05,
     "particleSpacing": 10,
     "k": 0.0447,

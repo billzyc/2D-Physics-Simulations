@@ -10,8 +10,18 @@ import window_info as windowInfo
 
 
 class SimulationEnvironment:
-
-    def __init__(self, supportRadius, g, k, kNear, restDensity, maxVel, maxForce, velDamp, forceDamp):
+    def __init__(
+        self,
+        supportRadius,
+        g,
+        k,
+        kNear,
+        restDensity,
+        maxVel,
+        maxForce,
+        velDamp,
+        forceDamp,
+    ):
         self.supportRadius = supportRadius
         self.g = g
         self.k = k
@@ -49,9 +59,7 @@ class SimulationEnvironment:
             targetParticle.rhoNear += densityNear
 
             # Pressure calculations
-            targetParticle.press = self.k* (
-                targetParticle.rho - self.restDensity
-            )
+            targetParticle.press = self.k * (targetParticle.rho - self.restDensity)
             targetParticle.pressNear = self.kNear * targetParticle.rhoNear
             dX = np.array([0, 0])
             for neighborEntry in targetParticle.neighbors:
@@ -76,9 +84,7 @@ class SimulationEnvironment:
             targetParticle.velocity[0] > self.maxVel
             or targetParticle.velocity[0] < -self.maxVel
         ):
-            targetParticle.velocity[0] = (
-                targetParticle.velocity[0] * self.velDamp
-            )
+            targetParticle.velocity[0] = targetParticle.velocity[0] * self.velDamp
         if (
             targetParticle.velocity[1] > self.maxVel
             or targetParticle.velocity[1] < -self.maxVel
@@ -88,9 +94,7 @@ class SimulationEnvironment:
             targetParticle.force[0] > self.maxForce
             or targetParticle.force[0] < -self.maxForce
         ):
-            targetParticle.force[0] = (
-                targetParticle.force[0] * self.forceDamp
-            )
+            targetParticle.force[0] = targetParticle.force[0] * self.forceDamp
         if (
             targetParticle.force[1] > self.maxForce
             or targetParticle.force[1] < -self.maxForce
@@ -112,21 +116,15 @@ class SimulationEnvironment:
         for targetParticle in self.particles:
             targetParticle.prevPos = targetParticle.pos
             targetParticle.calculateLocation(timePassed)
-            targetParticle.force = np.array(
-                [0, -1 * self.g]
-            )
+            targetParticle.force = np.array([0, -1 * self.g])
             self.physicalLimiter(targetParticle)
             targetParticle.rho = targetParticle.rhoNear = 0
             targetParticle.neighbors = []
 
     def createParticles(self, xMax, yMax):
         particles = []
-        for j in reversed(
-            range(0, yMax, ceil(self.supportRadius * 0.5))
-        ):
-            for i in range(
-                round(xMax / 2), xMax, ceil(self.supportRadius * 0.5)
-            ):
+        for j in reversed(range(0, yMax, ceil(self.supportRadius * 0.5))):
+            for i in range(round(xMax / 2), xMax, ceil(self.supportRadius * 0.5)):
                 if len(particles) >= self.numberOfParticles:
                     break
                 positionVector = np.array([i, windowInfo.height - j])

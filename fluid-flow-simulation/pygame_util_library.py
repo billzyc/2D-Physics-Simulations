@@ -148,7 +148,9 @@ class ClickButton:
             )
 
     def runInputBox(self, event, action):
-        if event.type == pygame.MOUSEBUTTONDOWN and self.checkClicked(pygame.mouse.get_pos()):
+        if event.type == pygame.MOUSEBUTTONDOWN and self.checkClicked(
+            pygame.mouse.get_pos()
+        ):
             action()
 
     def checkClicked(self, clickedPos):

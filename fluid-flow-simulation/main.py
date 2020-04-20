@@ -31,31 +31,32 @@ def drawGameWindow():
             round(physicalConsts["supportRadius"]),
         )
 
+
 def runSimulation():
     # event loop
     if kInput.isValueConfirmed:
         try:
-            physicalConsts["k"]=float(kInput.content)
+            physicalConsts["k"] = float(kInput.content)
         except:
             print("please try another float or int value")
     if kNearInput.isValueConfirmed:
         try:
-            physicalConsts["kNear"]=float(kNearInput.content)
+            physicalConsts["kNear"] = float(kNearInput.content)
         except:
             print("please try another float or int value")
     if gravityInput.isValueConfirmed:
         try:
-            physicalConsts["gravitationalConstant"]=float(gravityInput.content)
+            physicalConsts["gravitationalConstant"] = float(gravityInput.content)
         except:
             print("please try another float or int value")
     if particleSpacingInput.isValueConfirmed:
         try:
-            physicalConsts["particleSpacing"]=float(particleSpacingInput.content)
+            physicalConsts["particleSpacing"] = float(particleSpacingInput.content)
         except:
             print("please try another float or int value")
     if numOfParticles.isValueConfirmed:
         try:
-            physicalConsts["numberOfParticles"]=float(numOfParticles.content)
+            physicalConsts["numberOfParticles"] = float(numOfParticles.content)
         except:
             print("please try another float or int value")
     drawGameWindow()
@@ -63,13 +64,25 @@ def runSimulation():
     simulatedEnvironment.particleCalculations()
     pygame.display.update()
 
+
 def resetSimulation():
-        simulatedEnvironment.numberOfParticles = physicalConsts["numberOfParticles"]
-        simulatedEnvironment.restartSimulation(windowInfo.width, windowInfo.height)
+    simulatedEnvironment.numberOfParticles = physicalConsts["numberOfParticles"]
+    simulatedEnvironment.restartSimulation(windowInfo.width, windowInfo.height)
+
 
 # environment setup
 pygame.init()
-simulatedEnvironment = SimulationEnvironment(physicalConsts["supportRadius"], physicalConsts["gravitationalConstant"], physicalConsts["k"], physicalConsts["kNear"], physicalConsts["restDensity"], physicalConsts["maxVel"], physicalConsts["maxForce"], physicalConsts["velDamp"], physicalConsts["forceDamp"])
+simulatedEnvironment = SimulationEnvironment(
+    physicalConsts["supportRadius"],
+    physicalConsts["gravitationalConstant"],
+    physicalConsts["k"],
+    physicalConsts["kNear"],
+    physicalConsts["restDensity"],
+    physicalConsts["maxVel"],
+    physicalConsts["maxForce"],
+    physicalConsts["velDamp"],
+    physicalConsts["forceDamp"],
+)
 font = pygame.font.SysFont("arial", 30)
 win = pygame.display.set_mode((windowInfo.width, windowInfo.height), DOUBLEBUF)
 pygame.display.set_caption("fluid flow simulation")
@@ -80,26 +93,10 @@ simulatedEnvironment.createParticles(windowInfo.width, windowInfo.height)
 isProgramActive = True
 
 # Input set up
-kInput = InputBox(
-    50,
-    50,
-    50,
-    25,
-    "k:",
-    str(physicalConsts["k"]),
-    20,
-    (220, 220, 220),
-)
+kInput = InputBox(50, 50, 50, 25, "k:", str(physicalConsts["k"]), 20, (220, 220, 220),)
 
 kNearInput = InputBox(
-    150,
-    50,
-    50,
-    25,
-    "kNear:",
-    str(physicalConsts["kNear"]),
-    20,
-    (220, 220, 220),
+    150, 50, 50, 25, "kNear:", str(physicalConsts["kNear"]), 20, (220, 220, 220),
 )
 
 gravityInput = InputBox(
@@ -135,20 +132,12 @@ numOfParticles = InputBox(
     (220, 220, 220),
 )
 
-restartButton = ClickButton(
-    150,
-    250,
-    50,
-    25,
-    "Click to Restart",
-    20,
-    (0, 220, 0),
-)
+restartButton = ClickButton(150, 250, 50, 25, "Click to Restart", 20, (0, 220, 0),)
 
 # main loop
 while isProgramActive:
     simulatedEnvironment.previousTime = simulatedEnvironment.currentTime
-    simulatedEnvironment.currentTime +=1
+    simulatedEnvironment.currentTime += 1
     runSimulation()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
