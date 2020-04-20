@@ -42,7 +42,7 @@ class Particle:
     def drawChargeInfo(self, window):
         fontsize = 15
         font = pygame.font.SysFont("arial", fontsize)
-        content = font.render(str(self.charge / 1e-6), 1, (0, 0, 200))
+        content = font.render(f"{str(self.charge / 1e-6)} μC", 1, (0, 0, 200))
         window.blit(content, (self.x - self.radius, self.y - round(self.radius * 2.5)))
 
     def drawForceInfo(self, window):
