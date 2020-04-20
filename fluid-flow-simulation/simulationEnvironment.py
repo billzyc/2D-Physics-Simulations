@@ -17,6 +17,8 @@ class SimulationEnvironment:
         maxForce,
         velDamp,
         forceDamp,
+        xMax,
+        yMax
     ):
         self.supportRadius = supportRadius
         self.g = g
@@ -28,6 +30,8 @@ class SimulationEnvironment:
         self.velDamp = velDamp
         self.forceDamp = forceDamp
         self.restDensity
+        self.xMax = xMax
+        self.yMax = yMax
         self.particles = []
         self.currentTime = 0
         self.previousTime = 0
@@ -98,13 +102,13 @@ class SimulationEnvironment:
             targetParticle.force[1] * self.forceDamp
         if targetParticle.pos[0] < 0:
             targetParticle.force[0] -= (targetParticle.pos[0] - 0) * 0.05
-        elif targetParticle.pos[0] > windowInfo.width:
-            targetParticle.force[0] -= (targetParticle.pos[0] - windowInfo.width) * 0.05
+        elif targetParticle.pos[0] > self.xMax:
+            targetParticle.force[0] -= (targetParticle.pos[0] - self.xMax) * 0.05
         if targetParticle.pos[1] < 0:
             targetParticle.pos[1] = 0
-        elif targetParticle.pos[1] > windowInfo.height:
+        elif targetParticle.pos[1] > self.yMax:
             targetParticle.force[1] -= (
-                targetParticle.pos[1] - windowInfo.height
+                targetParticle.pos[1] - self.yMax
             ) * 0.05
 
     def updateParticle(self):
@@ -117,18 +121,18 @@ class SimulationEnvironment:
             targetParticle.rho = targetParticle.rhoNear = 0
             targetParticle.neighbors = []
 
-    def createParticles(self, xMax, yMax):
+    def createParticles(self):
         particles = []
-        for j in reversed(range(0, yMax, ceil(self.supportRadius * 0.5))):
-            for i in range(round(xMax / 2), xMax, ceil(self.supportRadius * 0.5)):
+        for j in reversed(range(0, self.yMax, ceil(self.supportRadius * 0.5))):
+            for i in range(round(self.xMax / 2), self.xMax, ceil(self.supportRadius * 0.5)):
                 if len(particles) >= self.numberOfParticles:
                     break
-                positionVector = np.array([i, windowInfo.height - j])
+                positionVector = np.array([i, self.yMax - j])
                 prevPositionVector = positionVector
                 newParticle = Particle(positionVector)
                 newParticle.prevPos = prevPositionVector
                 particles.append(newParticle)
         self.particles = particles
 
-    def restartSimulation(self, xMax, yMax):
-        self.createParticles(xMax, yMax)
+    def restartSimulation(self):
+        self.createParticles()

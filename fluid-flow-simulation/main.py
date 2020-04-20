@@ -65,7 +65,7 @@ def runSimulation():
 
 def resetSimulation():
     simulatedEnvironment.numberOfParticles = physicalConsts["numberOfParticles"]
-    simulatedEnvironment.restartSimulation(windowInfo.width, windowInfo.height)
+    simulatedEnvironment.restartSimulation()
 
 
 # environment setup
@@ -80,13 +80,14 @@ simulatedEnvironment = SimulationEnvironment(
     physicalConsts["maxForce"],
     physicalConsts["velDamp"],
     physicalConsts["forceDamp"],
+    windowInfo.width, windowInfo.height
 )
 font = pygame.font.SysFont("arial", 30)
 win = pygame.display.set_mode((windowInfo.width, windowInfo.height), DOUBLEBUF)
 pygame.display.set_caption("fluid flow simulation")
 
 simulatedEnvironment.numberOfParticles = physicalConsts["numberOfParticles"]
-simulatedEnvironment.createParticles(windowInfo.width, windowInfo.height)
+simulatedEnvironment.createParticles()
 
 isProgramActive = True
 
